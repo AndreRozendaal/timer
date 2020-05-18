@@ -1,16 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-author: Grey Li
-blog: withlihui.com
-email: withlihui@gmail.com
-github: github.com/greyli
-column: zhuanlan.zhihu.com/flask
----------------------------------
-A simple timer made with Flask and JavaScript.
-https://github.com/helloflask/timer
----------------------------------
-MIT license.
-"""
 import re
 from flask import Flask, render_template, url_for, redirect, request, flash
 
@@ -51,12 +39,6 @@ def minutes(num):
 @app.route('/<int:num>h')
 def hours(num):
     return redirect(url_for('timer', num=num*3600))
-
-# todo pomodoro mode: loop a 25-5 minutes cycle
-@app.route('/pomodoro')
-def pomodoro():
-    return render_template('index.html')
-
 
 @app.errorhandler(404)
 def page_not_found(e):
