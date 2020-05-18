@@ -16,6 +16,7 @@ $(document).ready(function() {
             if (--timer < 0) {
                 display.text("Time's Up!");
                 clearInterval(refresh);  // exit refresh loop
+    
                 var music = $("#over_music")[0];
                 music.play();
                 alert("Time's Up!");

@@ -15,8 +15,7 @@ import re
 from flask import Flask, render_template, url_for, redirect, request, flash
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'a very secret string'
-
+app.secret_key = 'many random bytes for flash message'
 
 @app.route('/')
 def index():
@@ -35,7 +34,7 @@ def custom():
     # use re to validate input data
     m = re.match('\d+[smh]?$', time)
     if m is None:
-        flash(u'请输入一个有效的时间，例如34、20s、15m、2h')
+        flash("use 10m, 30s, 15m, 10h")
         return redirect(url_for('index'))
     if time[-1] not in 'smh':
         return redirect(url_for('timer', num=int(time)))
@@ -60,6 +59,6 @@ def pomodoro():
 
 
 @app.errorhandler(404)
-def page_not_fouond(e):
-    flash(u'访问地址出错了，鼠标放在问号上了解更多: )')
+def page_not_found(e):
+    flash(u'Error page not found')
     return redirect(url_for('timer', num=244))
